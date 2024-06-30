@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TaskHive</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="public/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="public/styles/style.css">
+    </head>
+
+    <body>
+        <div>
+            <h1>Welcome to Task Hive</h1>
+            <h2>Your daily task planner and reminder</h2>
+        </div>
+        
+        <div class="container" id="addTaskBox">
+            <strong id="addTitle">Add Task:</strong>
+            <div class="input-container">
+                <input type="text" id="taskName" name="taskName" placeholder=" Task Name" size="53" required>
+                <button id="drop-btn">
+                    <img src="public/images/dropdown.svg" width="30px" height="30px" id="drop-img">
+                </button>
+                <br />
+            </div>
+            
+            <textarea id="taskDescription" name="taskDescription" rows="4" cols="51" placeholder="Additional Description"></textarea>
+            <br />
+            <div id="dateBox">
+                <label for="taskDeadline" id="taskdue">Due Date : </label>
+                <input type="date" id="taskDeadline" name="taskDeadline" >
+            </div>
+            
+            <br />
+            <button id="addTaskbtn" type="button">Add</button>
+        </div>
+
+        <div class="container" id="taskBox">
+            <strong style="padding-top: 10px;">Task List</strong>
+            
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Due By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+        <script src="public/js/index.js"></script>
+    </body>
+</html>
