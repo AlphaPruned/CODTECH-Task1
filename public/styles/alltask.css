@@ -1,51 +1,47 @@
-body{
+body {
     background-color: antiquewhite;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
+    font-family: Arial, sans-serif;
 }
 
-h1,h2{
+h1, h2 {
     color: #2d033b;
     text-align: center;
 }
 
-
-#addTaskBox{
-    /* height: auto; */
+#addTaskBox {
     align-self: center;
     background-color: white;
-    width: 400px;
+    width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: left;
     border-radius: 5px;
-    box-shadow: 0 0 8px rgb(0, 0, 0, 0.2);
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    padding: 10px 10px 12px 10px;
 }
-   
 
 #taskBox {
     background-color: white;
     width: 100%;
-    max-width: 420px;
     height: auto;
     border-radius: 5px;
-    box-shadow: 0 0 8px rgb(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 20px;
 }
 
-#taskName,#taskDescription,#taskDeadline,#addTitle{
+#taskName, #taskDescription, #taskDeadline, #addTitle {
     margin-top: 12px;
     padding: 0;
     background-color: white;
@@ -56,25 +52,43 @@ h1,h2{
     max-width: fit-content;
 }
 
-#taskDeadline{
+#taskDescription {
+    margin-right: 15px;
+}
+
+#dateBox, #listBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#taskDeadline {
     text-indent: 3px;
+    margin-bottom: 12px;
 }
 
-
-#taskName:hover,#taskDescription:hover,#taskDeadline:hover{
-    box-shadow: 0px 8px 8px rgb(0, 0, 0, 0.2);
+#taskName:hover, #taskDescription:hover, #taskDeadline:hover {
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
 }
 
-#taskName:focus,#taskDescription:focus,#taskDeadline:focus{
+#taskName:focus, #taskDescription:focus, #taskDeadline:focus {
     outline: 0;
-    box-shadow: 0 8px 8px rgb(0, 0, 0, 0.2);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
-#addTaskbtn{
-    background-color:red;
-    color:whitesmoke;
+#addTaskbtn {
+    background-color: red;
+    color: whitesmoke;
     border-radius: 15px;
     border: 0;
+    margin-left: 190px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+#addTaskbtn:hover {
+    background-color: darkred;
 }
 
 #taskTable {
@@ -102,6 +116,11 @@ h1,h2{
     background-color: #f2f2f2;
 }
 
+#taskTableContainer {
+    max-height: 900px; /* Adjust this height as needed */
+    overflow-y:auto;
+}
+
 .input-container {
     position: relative;
     display: flex;
@@ -123,6 +142,15 @@ h1,h2{
 
 #drop-btn img {
     display: block;
+    transition: transform 0.5s ease;
+}
+
+#toggle-img {
+    display: none;
+}
+
+#toggle-img:checked + #drop-btn img {
+    transform: rotate(90deg);
 }
 
 #taskDescription {
@@ -139,45 +167,73 @@ h1,h2{
     max-height: 200px; /* Adjust to the desired max height */
 }
 
-.delete-btn {
-    background-color: red;
+.delete-btn, .edit-btn, .save-btn, .comp-btn {
     color: white;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.delete-btn {
+    background-color: red;
 }
 
 .delete-btn:hover {
     background-color: darkred;
 }
 
-.edit-btn{
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 3px;
-    margin-left: 5px;
+.edit-btn {
+    background-color: goldenrod;
 }
 
-.edit-btn:hover{
+.edit-btn:hover {
+    background-color: darkgoldenrod;
+}
+
+.save-btn {
+    background-color: green;
+}
+
+.save-btn:hover {
+    background-color: darkgreen;
+}
+
+.comp-btn {
+    background-color: blue;
+}
+
+.comp-btn:hover {
     background-color: darkblue;
 }
 
-.save-btn{
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 3px;
-    margin-left: 5px;
+.task-row.completed {
+    background-color: #d4edda;
 }
 
-.save-btn:hover{
-    background-color: darkgreen;
+.task-row.incomplete {
+    background-color: #f8d7da;
+}
+
+.task-row.incomplete td {
+    text-decoration: none;
+}
+
+.task-row.completed td {
+    text-decoration: line-through;
+}
+
+#allTasksBtn, #completedTasksBtn, #incompleteTasksBtn {
+    margin-top: 15px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 50px;
+    background-color: yellow;
+    cursor: pointer;
+}
+
+#allTasksBtn:hover, #completedTasksBtn:hover, #incompleteTasksBtn:hover {
+    background-color: darkyellow;
 }

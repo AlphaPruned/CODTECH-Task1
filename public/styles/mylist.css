@@ -1,0 +1,81 @@
+body {
+    background-color: antiquewhite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #2d033b;
+    text-align: center;
+}
+
+#listOptions {
+    display: flex;
+    flex-wrap: wrap; /* To ensure buttons wrap if they exceed the container width */
+    justify-content: center; /* To center align the buttons */
+    gap: 15px; /* Space between the buttons */
+}
+
+.list-btn {
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: #4CAF50 !important; /* Ensure green background */
+    color: white !important; /* Ensure white text */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.list-btn:hover {
+    background-color: #45a049 !important; /* Darker green on hover */
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.table {
+    width: 100%;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.table th {
+    background-color: #2d033b;
+    color: white;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.update-status-btn {
+    margin: 2px;
+}
+
+.edit-task-btn, .delete-task-btn {
+    margin: 2px;
+}
+
+.edit-task-btn {
+    background-color: goldenrod;
+}
+
+.edit-task-btn:hover {
+    background-color: darkgoldenrod;
+}
+
+.delete-task-btn {
+    background-color: red;
+}
+
+.delete-task-btn:hover {
+    background-color: darkred;
+}

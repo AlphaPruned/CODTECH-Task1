@@ -1,0 +1,123 @@
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: salmon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-box{
+    height: 150px;
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loginForm{
+    padding: 15px;
+    background-color: aquamarine;
+    border-radius: 15px;
+}
+
+#password-container {
+    position: relative; 
+    display: inline-block;
+}
+
+#mail, #pswd{
+    border: 0;
+    border-radius: 15px;
+    margin-left: 68px;
+    text-indent: 7px;
+}
+
+#pswd{
+    /* padding-right: 30px; */
+    margin-left: 40px;
+}
+
+/* #pass-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggle-icon {
+    display: block;
+} */
+
+#pass-btn {
+    position: absolute;
+    background: none;
+    border: 0;
+    padding: 0;
+    right: 6px;
+    width: 17px;
+    height: 14px;
+    top: 6px;
+    
+    
+    /* right: 5px; */
+}
+
+#pass-btn img {
+    position: absolute;
+    max-width: 17px;
+    margin-left: -45px;
+    margin-bottom: 5px;
+    background: none;
+    left: 45px;
+    top: 1px;
+}
+
+#submit-box{
+    margin-top: 15px;
+    margin-left: 185px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border-color: black;
+    border: 10px;
+    background-color: white;
+}
+
+#submit-btn{
+    width: 30px;
+    border: 0;
+    outline: 0;
+}
+
+::-webkit-input-placeholder{
+    text-align: center;
+}
+
+#mail:hover,#pswd:hover{
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    background-color:azure;
+}
+
+#mail:focus,#pswd:focus{
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    text-indent: 7px;
+    outline-offset: 0px;
+    outline-style:inset;
+}
+
+#arrow-icon {
+    transition: transform 0.9s ease, opacity 0.5s ease;
+}
+
+#submit-btn:focus, #arrow-icon:focus, #submit-box:focus{
+    outline: 0;
+}
+
+.animate-right {
+    transform: translateX(24px); 
+    opacity: 0;
+}

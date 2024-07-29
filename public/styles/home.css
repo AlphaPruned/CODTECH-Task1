@@ -1,0 +1,247 @@
+body {
+    background-color: antiquewhite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #2d033b;
+    text-align: center;
+}
+
+#addTaskBox {
+    align-self: center;
+    background-color: white;
+    /* margin-left: 10px; */
+    width: 450px;
+    /* width: 600px; */
+    /* height: 600px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 12px;
+}
+
+#taskBox {
+    background-color: white;
+    width: 100%;
+    /* max-width: 420px; */
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#taskName, #taskDescription, #taskDeadline, #addTitle {
+    margin-top: 12px;
+    padding: 0;
+    background-color: white;
+    border: 0;
+    border-radius: 10px;
+    text-align: justify;
+    text-indent: 10px;
+    max-width: fit-content;
+}
+
+#taskDescription{
+    margin-right: 15px;
+}
+
+#dateBox, #listBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#taskDeadline {
+    text-indent: 3px;
+    margin-bottom: 12px;
+}
+
+#taskName:hover, #taskDescription:hover, #taskDeadline:hover {
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+#taskName:focus, #taskDescription:focus, #taskDeadline:focus {
+    outline: 0;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+#addTaskbtn {
+    background-color: red;
+    color: whitesmoke;
+    border-radius: 15px;
+    border: 0;
+    margin-left: 190px;
+    margin-bottom: 10px;
+}
+
+#taskTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#taskTable th, #taskTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#taskTable th {
+    background-color: #2d033b;
+    color: white;
+    text-align: center;
+}
+
+#taskTable td {
+    text-align: center;
+}
+
+#taskTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container input {
+    flex-grow: 1;
+    padding-right: 40px; /* Add padding to avoid overlap with the button */
+}
+
+.input-container button {
+    position: absolute;
+    right: 10px; /* Adjust the right position as needed */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#drop-btn img {
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+#toggle-img {
+    display: none;
+}
+
+#toggle-img:checked + #drop-btn img {
+    transform: rotate(90deg);
+}
+
+#taskDescription {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#taskDescription.show {
+    display: block;
+    opacity: 1;
+    max-height: 200px; /* Adjust to the desired max height */
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.edit-btn {
+    background-color: goldenrod;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.edit-btn:hover {
+    background-color: darkgoldenrod;
+}
+
+.save-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.save-btn:hover {
+    background-color: darkgreen;
+}
+
+.comp-btn {
+    background-color:blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.comp-btn:hover {
+    background-color: darkblue;
+}
+
+/* Add your existing styles here */
+
+.task-row.completed {
+    background-color: #d4edda;
+}
+
+.task-row.incomplete {
+    background-color: #f8d7da;
+}
+
+.task-row.incomplete td {
+    text-decoration: none;
+}
+
+.task-row.completed td {
+    text-decoration: line-through;
+    display: none;
+}
+
+#allTasksBtn,#completedTasksBtn,#incompleteTasksBtn{
+    margin-top: 15px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 50px;
+    background-color: yellow;
+    cursor: pointer;
+}

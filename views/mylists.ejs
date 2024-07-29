@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TaskHive - Lists</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="/styles/mylist.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container-fluid" style="padding: 0;">
+    <div class="row">
+      <div class="col-2">
+        <%- include('sidebar.ejs') %>
+      </div>
+      <div class="col-10" style="margin-top: 50px;">
+        <h1>Task Lists</h1>
+        <div id="listOptions">
+          <% lists.forEach(list => { %>
+            <button class="btn list-btn" data-bs-toggle="modal" data-bs-target="#listModal<%= list.list_id %>"><%= list.list_name %></button>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <% lists.forEach(list => { %>
+    <div class="modal fade" id="listModal<%= list.list_id %>" tabindex="-1" aria-labelledby="listModalLabel<%= list.list_id %>" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="listModalLabel<%= list.list_id %>"><%= list.list_name %></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Due By</th>
+                  <th>Status</th>
+                  <!-- <th>Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <% tasks.filter(task => task.list_id === list.list_id).forEach(task => { %>
+                  <tr data-task-id="<%= task.task_id %>">
+                    <td><%= task.task_name %></td>
+                    <td><%= new Date(task.due_date).toISOString().split('T')[0] %></td>
+                    <td>
+                      <button class="btn btn-sm <%= task.status === 'Complete' ? 'btn-success' : 'btn-warning' %> update-status-btn"><%= task.status === 'Complete' ? 'Complete' : 'Incomplete' %></button>
+                    </td>
+                    <!-- <td>
+                      <button class="btn btn-primary btn-sm edit-task-btn">Edit</button>
+                      <button class="btn btn-danger btn-sm delete-task-btn">Delete</button>
+                    </td> -->
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+
+  <script src="/js/listPage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO0o+9Z6H0Z1zF4SIlCFfU8U2/Oa5bR1FLQ61UAZz8pD4Y3Blg+ExyEOnBLo7" crossorigin="anonymous"></script>
+</body>
+</html>
