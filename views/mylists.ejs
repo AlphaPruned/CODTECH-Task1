@@ -26,45 +26,45 @@
   </div>
 
   <!-- Modals -->
-  <% lists.forEach(list => { %>
-    <div class="modal fade" id="listModal<%= list.list_id %>" tabindex="-1" aria-labelledby="listModalLabel<%= list.list_id %>" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="listModalLabel<%= list.list_id %>"><%= list.list_name %></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Task</th>
-                  <th>Due By</th>
-                  <th>Status</th>
-                  <!-- <th>Actions</th> -->
+<% lists.forEach(list => { %>
+  <div class="modal fade" id="listModal<%= list.list_id %>" tabindex="-1" aria-labelledby="listModalLabel<%= list.list_id %>" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="listModalLabel<%= list.list_id %>"><%= list.list_name %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Due By</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% tasks.filter(task => task.list_id === list.list_id).forEach(task => { %>
+                <tr data-task-id="<%= task.task_id %>">
+                  <td class="task-name" contenteditable="true"><%= task.task_name %></td>
+                  <td class="due-date" contenteditable="true"><%= new Date(task.due_date).toISOString().split('T')[0] %></td>
+                  <td>
+                    <button class="btn btn-sm <%= task.status === 'Complete' ? 'btn-success' : 'btn-warning' %> update-status-btn"><%= task.status === 'Complete' ? 'Complete' : 'Incomplete' %></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary btn-sm save-task-btn">Save</button>
+                    <button class="btn btn-danger btn-sm delete-task-btn">Delete</button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                <% tasks.filter(task => task.list_id === list.list_id).forEach(task => { %>
-                  <tr data-task-id="<%= task.task_id %>">
-                    <td><%= task.task_name %></td>
-                    <td><%= new Date(task.due_date).toISOString().split('T')[0] %></td>
-                    <td>
-                      <button class="btn btn-sm <%= task.status === 'Complete' ? 'btn-success' : 'btn-warning' %> update-status-btn"><%= task.status === 'Complete' ? 'Complete' : 'Incomplete' %></button>
-                    </td>
-                    <!-- <td>
-                      <button class="btn btn-primary btn-sm edit-task-btn">Edit</button>
-                      <button class="btn btn-danger btn-sm delete-task-btn">Delete</button>
-                    </td> -->
-                  </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          </div>
+              <% }); %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-  <% }) %>
+  </div>
+<% }) %>
 
   <script src="/js/listPage.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO0o+9Z6H0Z1zF4SIlCFfU8U2/Oa5bR1FLQ61UAZz8pD4Y3Blg+ExyEOnBLo7" crossorigin="anonymous"></script>
